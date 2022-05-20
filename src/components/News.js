@@ -3,7 +3,7 @@ import NewsItem from "./NewsItem";
 
 export class News extends Component {
   construtor() {
-    this.state = {
+    this.SetState = {
       articles: this.articles
     };
     // console.log(this.articles[0]);
