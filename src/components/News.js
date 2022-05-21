@@ -351,7 +351,7 @@ export class News extends Component {
       <div>
         <div className="container">
          
-          <h1>Top Headlines</h1>
+          <h1 style={{color:"white"}}>Top Headlines</h1>
           <div className="row">
           {this.articles.map((element)=>{
            return <div className="col md-3" key={element.url}>
