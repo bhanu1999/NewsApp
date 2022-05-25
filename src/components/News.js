@@ -54,7 +54,7 @@ export class News extends Component {
     return (
       <div>
         <div className="container">
-          <h1 style={{ color: "white" }}>NewsPigeon-The News Carrier</h1>
+          <h1 className="text-center" style={{ color: "white" }}>NewsPigeon-The News Carrier</h1>
           <h1 style={{ color: "white" }}>Top Headlines</h1>
           <div className="row">
             {this.state.articles.map((element) => {
