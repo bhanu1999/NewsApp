@@ -4,7 +4,7 @@ export default class SpinnerComp extends Component {
 
   render() {
     return (
-      <div className='text-center'><img src='loading.gif' alt='loading'></img></div>
+      <div style={{margin:"300px"}} className='text-center'><img src='loading.gif' alt='loading'></img></div>
     )
   }
 }

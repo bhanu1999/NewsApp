@@ -11,7 +11,7 @@ export default class App extends Component {
     
     <NavBar/>
     
-    <News pageSize={8}/>
+    <News  category="general"/>
     </>
     )
   }

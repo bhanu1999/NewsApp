@@ -1,7 +1,18 @@
 import React, { Component } from "react";
 import NewsItem from "./NewsItem";
 import SpinnerComp from "./SpinnerComp";
+import PropTypes from 'prop-types'
 export class News extends Component {
+  static defaultProps={
+    country:"in",
+    pageSize:8,
+    category:"Sports"
+
+  }
+  static propTypes={
+    country:PropTypes.string
+    
+  }
 
   constructor() {
     super();
@@ -15,7 +26,7 @@ export class News extends Component {
   async componentDidMount() {
     this.setState({loading:true});
     let url =
-      `https://newsapi.org/v2/top-headlines?country=in&apiKey=ecf784631a0345e98edc2640c7f7365a&page=1&pagesize=${this.props.pageSize}`;
+      `https://newsapi.org/v2/top-headlines?category=${this.props.category}&apiKey=ecf784631a0345e98edc2640c7f7365a&page=1&pagesize=${this.props.pageSize}&country=${this.props.country}`;
     let result = await fetch(url);
     let data = await result.json();
 
@@ -32,7 +43,7 @@ export class News extends Component {
     else{
     let num=this.state.page+1;
     console.log(num);
-    let url = `https://newsapi.org/v2/top-headlines?country=in&apiKey=ecf784631a0345e98edc2640c7f7365a&page=${num}&pageSize=${this.props.pageSize}`;
+    let url = `https://newsapi.org/v2/top-headlines?category=${this.props.category}&apiKey=ecf784631a0345e98edc2640c7f7365a&page=${num}&pageSize=${this.props.pageSize}&country=${this.props.country}`;
   let result = await fetch(url);
   let data = await result.json();
    this.setState({
@@ -45,7 +56,7 @@ export class News extends Component {
     this.setState({loading:true});
     console.log("prev buton clicked");
     let num=this.state.page-1;
-    let url =`https://newsapi.org/v2/top-headlines?country=in&apiKey=ecf784631a0345e98edc2640c7f7365a&page=${num}&pageSize=${this.props.pageSize}`;
+    let url =`https://newsapi.org/v2/top-headlines?category=${this.props.category}&apiKey=ecf784631a0345e98edc2640c7f7365a&page=${num}&pageSize=${this.props.pageSize}&country=${this.props.country}`;
   let result = await fetch(url);
   // console.log(result);
   let data = await result.json();
@@ -61,8 +72,8 @@ export class News extends Component {
       <div>
         <div className="container">
           {this.state.loading && <SpinnerComp/>}
-         {!this.state.loading &&  <h1 className="text-center" style={{ color: "white" }}>NewsPigeon-The News Carrier</h1>}
-        { !this.state.loading &&  <h1 style={{ color: "white" }}>Top Headlines</h1>}
+         {/* {!this.state.loading &&  <h1 className="text-center" style={{ color: "white" }}>NewsPigeon-The News Carrier</h1>} */}
+        { !this.state.loading &&  <h1 className="text-center" style={{ color: "white" }}>News Pigeon - Top Headlines</h1>}
           <div className="row">
             {!this.state.loading && this.state.articles.map((element) => {
               return (
