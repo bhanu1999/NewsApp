@@ -89,6 +89,8 @@ export class News extends Component {
                         : "https://images.news18.com/ibnlive/uploads/2022/03/2022-03-09t042643z_1_lynxmpei28066_rtroptp_4_markets-india-stocks-164681548916x9.jpg"
                     }
                     newsUrl={element.url}
+                    author={element.author}
+                    time={element.publishedAt}
                   />
                 </div>
               );
