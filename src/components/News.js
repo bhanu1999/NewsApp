@@ -33,30 +33,33 @@ export class News extends Component {
   }
   updateNews = async () => {
     this.setState({ loading: true });
+    this.props.setProgress(10);
     const url = `https://newsapi.org/v2/top-headlines?category=${this.props.category}&apiKey=d093053d72bc40248998159804e0e67d&page=${this.state.page}&pagesize=${this.props.pageSize}&country=${this.props.country}`;
     let result = await fetch(url);
     let data = await result.json();
+    this.props.setProgress(40);
 
     this.setState({
       articles: data.articles,
       totalResults: data.totalResults,
       loading: false,
     });
+    this.props.setProgress(100);
   };
   async componentDidMount() {
     this.updateNews();
   }
 
-  handlePrevClick = async () => {
-    this.setState({ page: this.state.page - 1 });
-    this.updateNews();
-  };
+  // handlePrevClick = async () => {
+  //   this.setState({ page: this.state.page - 1 });
+  //   this.updateNews();
+  // };
 
-  handleNextClick = async () => {
+  // handleNextClick = async () => {
   
-   this.setState({ page: this.state.page + 1});
-    this.updateNews();
-  };
+  //  this.setState({ page: this.state.page + 1});
+  //   this.updateNews();
+  // };
 
   fetchMoreData = async () => {
     this.setState({ page: this.state.page + 1 });
